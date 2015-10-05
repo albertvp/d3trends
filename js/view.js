@@ -28,7 +28,7 @@ define(['d3','service','ui'],function (d3,service,ui){
 					.attr('dx', x*ui.radius/1.2+'px')
 					.attr('dy', y+ui.perimeter+ui.radius+'px')
 					.style('fill',ui.getColor(data.type,i))
-					.style('text-anchor', 'middle')
+					.style('text-anchor', i%2===0 ? 'middle' : 'left')
 					.text(function() { return ui.capitalize(d); });
 			// percentage
 			svg.append('text')
@@ -49,29 +49,6 @@ define(['d3','service','ui'],function (d3,service,ui){
 			if (++i%2){ x*=-1; z = 1.2; t = 2; }
 			if (i%3===0){ y+=50; }
 		}
-
-		// // Tablet
-		// svg.append('text')
-		// 		.attr('dx',-ui.radius/1.2+'px')
-		// 		.attr('dy', ui.perimeter+ui.radius+'px')
-		// 		.style('fill',ui.getColor(data.type,1))
-		// 		.style('text-anchor', 'left')
-		// 		.text(function(d) { return 'Tablet' });
-		// // Tablet percentage
-		// svg.append('text')
-		// 		.attr('dx',-ui.radius/1.2+'px')
-		// 		.attr('dy', ui.perimeter*3+ui.radius+'px')
-		// 		.style('text-anchor', 'left')
-		// 		.style('font-weight', 'bold')
-		// 		.text(function(d) { return ui.percentage(data.tablet/(sum)) });
-		// // Tablet total
-		// svg.append('text')
-		// 		.attr('dx',-ui.radius/2+'px')
-		// 		.attr('dy', ui.perimeter*3+ui.radius+'px')
-		// 		.style('font-size','13px')
-		// 		.style('fill','grey')
-		// 		.style('text-anchor', 'left')
-		// 		.text(function(d) { return  data.prefix+ui.formatNumber(data.tablet)+data.suffix });
 	}
 
 	view.drawDonut = function(id,data){
