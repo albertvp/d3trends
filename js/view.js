@@ -28,7 +28,7 @@ define(['d3','service','ui'],function (d3,service,ui){
           .attr('dx', x*ui.radius/1.2+'px')
           .attr('dy', y+ui.perimeter+ui.radius+'px')
           .style('fill',ui.getColor(data.type,i))
-          .style('text-anchor', i%2===0 ? 'middle' : 'left')
+          .style('text-anchor', 'middle')
           .text(function() { return ui.capitalize(d); });
       // percentage
       svg.append('text')
@@ -47,7 +47,8 @@ define(['d3','service','ui'],function (d3,service,ui){
           .text(function() { return  data.prefix+ui.formatNumber(data.dimension[d])+data.suffix });
 
       if (++i%2){ x*=-1; z = 1.2; t = 2; }
-      if (i%3===0){ y+=50; }
+      else { z = 2; t = 1.1; }
+      if (i>1 && i%2===0){ y+=50; }
     }
   }
 
@@ -58,7 +59,7 @@ define(['d3','service','ui'],function (d3,service,ui){
 
     var svg = d3.select(id).append('li').append('svg')
         .attr('width', ui.width)
-        .attr('height', ui.height+50)
+        .attr('height', ui.height+50*Object.keys(data.dimension).length)
         .append('g').attr('transform', ui.transform);
 
     var g = svg.selectAll('.arc')

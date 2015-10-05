@@ -9,7 +9,8 @@ define(['d3'],function (d3){
     colors: {
       revenue: ['DarkGreen','LimeGreen'],
       impressions: ['DodgerBlue','DeepSkyBlue'],
-      visits: ['GoldenRod','Gold']
+      visits: ['GoldenRod','Gold'],
+      elections: ['cyan','orange','red','magenta','blue','yellow']
     },
     capitalize: capitalize
   };
